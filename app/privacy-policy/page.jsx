@@ -22,13 +22,12 @@ export const metadata = {
 
 export default async function HomePage() {
   const term = await getTerm("privacy-policy");
-  console.log(term);
   return (
     <>
       <GlobalLayout staticHeader={true}>
         <div className={`${styles.privacyPolicy}`}>
           <div className={styles.inner}>
-              <TermsContent content={term?.fields?.textBlock} term={term} />
+              <TermsContent term={term} />
           </div>
         </div>
       </GlobalLayout>

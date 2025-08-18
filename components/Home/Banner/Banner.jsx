@@ -23,7 +23,6 @@ export default function Banner() {
   return (
     <div className={styles.Banner}>
       <div className={styles.inner}>
-
         <BackedBy />
 
         <div className={styles.textWrap} ref={ref}>
@@ -92,7 +91,12 @@ export default function Banner() {
         <span key={i} className={styles.meteors} />
       ))}
 
-      <div className={styles.absoluteBackground}></div>
+      <div
+        className={styles.absoluteBackground}
+        style={{
+          backgroundImage: `radial-gradient(circle closest-side at 50% 42%, #0a0b14d1 90%, #0e0e13), url("/img/grid-bg.svg")`,
+        }}
+      ></div>
       <Marquee />
     </div>
   );

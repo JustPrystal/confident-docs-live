@@ -1,10 +1,25 @@
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { Document } from "@contentful/rich-text-types";
 import { formatDate } from "@/functions/format-date";
 import { BLOCKS } from "@contentful/rich-text-types";
 import styles from "./styles.module.scss";
-export default function Terms({ content, term }) {
-  const generateSlug = (text, options = {}) => {
-    const { lower = true, strict = false } = options;
+
+type Terms = {
+  fields: {
+    heading: string;
+    textBlock: Document;
+  };
+  sys: {
+    updatedAt: string;
+  };
+  
+};
+type CardProps = {
+  
+  term: Terms;
+}
+export default function Terms({ term }: CardProps) {
+  const generateSlug = (text, options = { lower: true, strict: false }) => {
     let slug = text
       .toLowerCase()
       .trim()
@@ -14,13 +29,12 @@ export default function Terms({ content, term }) {
       .replace(/-+/g, "-")
       .replace(/^-+|-+$/g, "");
 
-    if (strict) {
+    if (options.strict) {
       slug = slug.replace(/[^a-z-]/g, ""); // only allow a-z and hyphens
     }
 
-    return lower ? slug : slug.charAt(0).toUpperCase() + slug.slice(1);
+    return options.lower ? slug : slug.charAt(0).toUpperCase() + slug.slice(1);
   };
-
   const options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
@@ -95,6 +109,7 @@ export default function Terms({ content, term }) {
       ),
     },
   };
+  
   return (
     <div className={styles.termsContent}>
       <h1 id={generateSlug(term?.fields?.heading)}>
@@ -103,8 +118,8 @@ export default function Terms({ content, term }) {
       </h1>
       <span className={styles.dateModified}>
         Last Modified: {formatDate(term?.sys.updatedAt)}
-      </span>
-      {documentToReactComponents(content, options)}
+      </span> 
+      {documentToReactComponents(term?.fields?.textBlock, options)}
     </div>
   );
 }

@@ -96,7 +96,6 @@ export default function Form() {
     setIsSubmitting(true);
 
     try {
-      console.log("Form submitted with data:", formData);
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       const calendlyUrl = `https://calendly.com/d/cqbp-t88-y4j/confident-ai-intro-call?embed_domain=localhost&embed_type=PopupText&utm_source=landing&a1=${formData.companyName}&a2=${formData.jobTitle}&a3=${formData.teamSize}&a4=${formData.applicationType}&name=${formData.fullName}&email=${formData.email}`;

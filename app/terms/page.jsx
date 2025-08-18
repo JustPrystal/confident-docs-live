@@ -25,13 +25,12 @@ export const metadata = {
 
 export default async function HomePage() {
   const term = await getTerm("terms-of-service");
-  console.log(term);
   return (
     <>
       <GlobalLayout staticHeader={true}>
         <div className={`${styles.termsOfService}`}>
           <div className={styles.inner}>
-            <Terms content={term?.fields?.textBlock} term={term} />
+            <Terms term={term} />
           </div>
         </div>
       </GlobalLayout>

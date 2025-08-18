@@ -3,7 +3,7 @@ export const formatDate = (dateString) => {
     if (!dateString) return "";
     
     const date = new Date(dateString);
-    const options = { 
+    const options: Intl.DateTimeFormatOptions = { 
       year: 'numeric', 
       month: 'short', 
       day: 'numeric' 
@@ -15,7 +15,7 @@ export const formatDate = (dateString) => {
 export const formatMonthYear = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);
-    const options = {
+    const options: Intl.DateTimeFormatOptions = {
         year: 'numeric',
         month: 'long'
     };

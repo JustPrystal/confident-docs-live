@@ -15,13 +15,6 @@ export default async function RootLayout({ children }) {
     >
       <ConditionalHead />
       <body suppressHydrationWarning>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PJ6SMMP5"
-            height="0"
-            width="0"
-          ></iframe>
-        </noscript>
         {children}
       </body>
     </html>

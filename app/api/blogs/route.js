@@ -9,7 +9,6 @@ export async function GET(request) {
 
   try {
     const blogs = await getBlogs(Number(page), Number(limit), category, excludeSlug);
-    console.log('Fetched blogs:', blogs);
     return Response.json(blogs);
   } catch (err) {
     console.error('API Error:', err);

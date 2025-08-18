@@ -2,8 +2,15 @@
 import styles from "./styles.module.scss";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
-
-export default function CaseStudyContent({ content, fields }) {
+import { Document } from "@contentful/rich-text-types";
+type CaseStudyContentProps = {
+  content: Document;
+  fields: {
+    representative: string;
+    representativesRole: string;
+  }
+}
+export default function CaseStudyContent({ content, fields }: CaseStudyContentProps) {
   const options = {
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,

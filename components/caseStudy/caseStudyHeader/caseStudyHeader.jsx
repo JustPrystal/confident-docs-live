@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { formatMonthYear } from "@/functions/format-date";
 import styles from "./styles.module.scss";
 export default function CaseStudyHeader({ content }) {
