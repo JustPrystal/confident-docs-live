@@ -1,10 +1,11 @@
 import GlobalLayout from "@/app/global-layout";
-import CaseStudyHeader from "@/components/caseStudy/caseStudyHeader/caseStudyHeader";
-import CaseStudyContent from "@/components/caseStudy/caseStudyContent/caseStudyContent";
-import TextOnlySection from "@/components/caseStudy/textOnlySection/textOnlySection";
+import CaseStudyHeader from "@/components/CaseStudy/CaseStudyHeader/CaseStudyHeader";
+import CaseStudyContent from "@/components/CaseStudy/CaseStudyContent/CaseStudyContent";
+import TextOnlySection from "@/components/CaseStudy/TextOnlySection/TextOnlySection";
 import { getCase } from "@/functions/get-case-study";
 import styles from "./styles.module.scss";
-import Button from "@/components/button/button";
+import Button from "@/components/Button/Button";
+
 export default async function Page({ params }) {
   const { slug } = await params;
   const study = await getCase(slug);

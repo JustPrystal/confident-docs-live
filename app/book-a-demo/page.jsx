@@ -1,5 +1,5 @@
-import Form from "@/components/contactForm/form";
-import GlobalLayout from "../global-layout";
+import DemoForm from "@/components/ContactForm/DemoForm";
+import GlobalLayout from "@/app/global-layout";
 
 export const metadata = {
   title: "Book A Demo Today | Confident AI",
@@ -26,7 +26,7 @@ export const metadata = {
 export default function HomePage() {
   return (
       <GlobalLayout staticHeader={true}>
-        <Form />
+        <DemoForm />
       </GlobalLayout>
   );
 }

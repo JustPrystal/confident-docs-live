@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import cardStyles from './card.module.scss'
-import Skeleton from "@/components/blog/skeleton/skeleton";
-import Card from "./card/card";
+import cardStyles from "./card.module.scss";
+import Skeleton from "@/components/Blog/Skeleton/Skeleton";
+import Card from "@/components/Blog/Card/Card";
 
 export default function Blogs({
   limit = 3,

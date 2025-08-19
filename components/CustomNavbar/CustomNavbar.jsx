@@ -2,7 +2,7 @@
 import styles from "./styles.module.scss";
 import { Navbar } from "nextra-theme-docs";
 import Logo from "@/components/mdxComponents/Logo/Logo";
-import GitHubButton from "@/components/gitHubButton/gitHubButton";
+import GitHubButton from "@/components/GitHubButton/GitHubButton";
 import SignUpButton from "@/components/SignUpButton";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";

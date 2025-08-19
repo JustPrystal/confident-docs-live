@@ -1,6 +1,7 @@
-import Blogs from "@/components/blog/blogs";
+import Blogs from "@/components/Blog/Blogs";
 import GlobalLayout from "@/app/global-layout";
-import Banner from '@/components/blog/banner/banner'
+import Banner from '@/components/Blog/Banner/Banner'
+
 export const metadata = {
   title: "Confident AI Blog - Resources to help teams stay confident in AI",
   description:
@@ -20,6 +21,7 @@ export const metadata = {
       "Join our weekly newsletter to stay confident in the AI systems you build. Our articles include tutorials, guides, and essays to safely build and evaluate LLMs.",
   },
 };
+
 export default async function Page() {
   return (
     <>

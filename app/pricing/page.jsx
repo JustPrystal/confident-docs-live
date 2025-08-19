@@ -1,5 +1,5 @@
-import Memberships from '@/components/pricing/memberships/memberships'
-import GlobalLayout from '../global-layout'
+import Memberships from '@/components/Pricing/Memberships/Memberships'
+import GlobalLayout from '@/app/global-layout'
 
 export const metadata = {
   title: "Pricing that scales with your needs",
