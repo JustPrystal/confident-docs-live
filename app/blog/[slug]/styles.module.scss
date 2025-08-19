@@ -1,19 +1,24 @@
 @import "@/app/styles/vars";
+
 .Article {
   background-color: $white;
   padding: 40px 0 200px;
+
   @include responsive(md) {
     padding-top: 45px;
     padding-bottom: 166px;
   }
+
   @include responsive(sm) {
     padding-top: 35px;
     padding-bottom: 138px;
   }
+
   @include responsive(xs) {
     padding-top: 16px;
     padding-bottom: 115px;
   }
+
   .inner {
     width: 100%;
     max-width: $container_md;
@@ -21,6 +26,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+
     .notFoundTitle {
       text-align: center;
       color: #fff;
@@ -28,6 +34,7 @@
       padding: 0 20px;
       font-family: $Lexend;
     }
+
     .notFoundSubHeading {
       text-align: center;
       margin: 0 0 2rem;
@@ -36,35 +43,43 @@
       padding: 0 20px;
       font-family: $inter
     }
+
     .contentWrap {
       max-width: 840px;
       width: 100%;
       display: flex;
       flex-direction: column;
       margin: 0 auto;
+
       @include responsive(xl) {
         max-width: 768px;
         width: 60%;
       }
+
       @include responsive(md) {
         width: 90%;
         max-width: 728px;
       }
+
       @include responsive(xs) {
         width: 100%;
         padding: 0 20px;
       }
+
       .mainContent {
         position: relative;
+
         @include responsive(md) {
           position: static;
         }
+
         .featuredImage {
           margin-bottom: 32px;
           object-fit: cover;
           min-height: 487px;
           max-height: 487px;
           width: 100%;
+
           @include responsive(sm) {
             max-width: 600px;
             margin: 0 auto;
@@ -74,12 +89,14 @@
             min-height: unset;
             max-height: unset;
           }
+
           @include responsive(xs){
             margin-bottom: 20px ;
           }
         }
       }
     }
+    
     .blogWrap{
       margin-top: 140px;
       padding: 0 4px;

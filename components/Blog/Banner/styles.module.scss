@@ -52,12 +52,10 @@
       @include responsive(xl) {
         font-size: 60px;
         font-family: $Lexend;
-        font-weight: 500;
       }
 
       @include responsive(md) {
         font-size: 55px;
-        font-weight: 500;
       }
 
       @include responsive(sm) {

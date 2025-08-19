@@ -30,14 +30,7 @@ export default function Banner() {
               hasAnimated ? styles.popUpText : ""
             }`}
           >
-            The LLM{" "}
-            <span
-              className="underline"
-              style={{ color: "#6e00ff", textDecoration: "underline" }}
-            >
-              Evaluation
-            </span>{" "}
-            & Observability Platform for DeepEval
+            The LLM eval platform that moves the needle
           </h1>
           <p
             className={`${styles.bannerDescription} ${

@@ -2,7 +2,35 @@
 
 import Link from "next/link";
 import { formatDate } from "@/functions/format-date";
-export default function Card({ blog, variant = "Dark", orientation, styles }) {
+import Skeleton from "@/components/Blog/Skeleton/Skeleton";
+
+export default function Card({ blog, variant = "Dark", orientation, styles, isLoading = false }) {
+  if (isLoading) {
+    return (
+      <div className={`${styles.Card} ${styles[variant]} ${styles[orientation]}`}>
+        <div className={styles.imageWrap}>
+          <Skeleton className={styles.skeletonImage} variant={variant} />
+        </div>
+        <div className={styles.textWrap}>
+          <div>
+            <Skeleton className={styles.skeletonTitle} variant={variant} />
+            <Skeleton className={styles.skeletonDescription} variant={variant} />
+            <Skeleton className={styles.skeletonDescriptionLine2} variant={variant} />
+          </div>
+          <div className={styles.author}>
+            <div className={styles.profilePicture}>
+              <Skeleton className={styles.skeletonAvatar} variant={variant} />
+            </div>
+            <div className={styles.user}>
+              <Skeleton className={styles.skeletonUsername} variant={variant} />
+              <Skeleton className={styles.skeletonMetadata} variant={variant} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Link
       href={`/blog/${blog?.fields?.link}`}

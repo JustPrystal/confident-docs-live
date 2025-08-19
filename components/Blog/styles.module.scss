@@ -51,18 +51,16 @@
         padding-bottom: 10px;
         cursor: pointer;
         line-height: 1.75em;
+        
         @include responsive(xl) {
           padding: 10px 0;
           line-height: 1.7em;
         }
+
         @include responsive(xs) {
           padding-bottom: 6px;
         }
-        &:first-child {
-          span {
-            font-weight: 400;
-          }
-        }
+
         span {
           font-family: $PTSans;
           color: $white;
