@@ -1,12 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./styles.module.scss";
-import Marquee from "@/components/home/marquee/marquee";
-import { useEffect, useRef, useState } from "react";
+import Marquee from "@/components/Home/Marquee/Marquee";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import Button from "@/components/button/button";
-import BackedBy from "@/components/backedBy/backedBy";
+import Button from "@/components/Button/Button";
+import BackedBy from "@/components/BackedBy/BackedBy";
 
 export default function Banner() {
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -31,14 +30,7 @@ export default function Banner() {
               hasAnimated ? styles.popUpText : ""
             }`}
           >
-            The LLM{" "}
-            <span
-              className="underline"
-              style={{ color: "#6e00ff", textDecoration: "underline" }}
-            >
-              Evaluation
-            </span>{" "}
-            & Observability Platform for DeepEval
+            The LLM eval platform that moves the needle
           </h1>
           <p
             className={`${styles.bannerDescription} ${
@@ -94,7 +86,7 @@ export default function Banner() {
       <div
         className={styles.absoluteBackground}
         style={{
-          backgroundImage: `radial-gradient(circle closest-side at 50% 42%, #0a0b14d1 90%, #0e0e13), url("/img/grid-bg.svg")`,
+          backgroundImage: `radial-gradient(circle closest-side at 50% 42%, #0b101b00 90%, #0e0e13), url("/img/grid-bg.svg")`,
         }}
       ></div>
       <Marquee />

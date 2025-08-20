@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { getGithubStars } from "@/functions/get-stars";
-import Counter from "@/components/home/marquee/counter";
+import Counter from "@/components/Home/Marquee/Counter";
 import styles from "./styles.module.scss";
 
 export default function Marquee() {

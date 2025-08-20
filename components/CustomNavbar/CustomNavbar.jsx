@@ -2,7 +2,7 @@
 import styles from "./styles.module.scss";
 import { Navbar } from "nextra-theme-docs";
 import Logo from "@/components/mdxComponents/Logo/Logo";
-import GitHubButton from "@/components/gitHubButton/gitHubButton";
+import GitHubButton from "@/components/GitHubButton/GitHubButton";
 import SignUpButton from "@/components/SignUpButton";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -70,69 +70,71 @@ const CustomNavbar = ({ isDocsPage, staticHeader = false }) => {
       } ${active ? styles.active : ""}`}
     >
       <div className={styles.container}>
-        <Link href="/" className={styles.logoWrap}>
-          <Image
-            src="/icons/logo-without-border.svg"
-            alt="White bowtie with confident AI written on the right side"
-            width={32}
-            height={32}
-            priority
-          />
-          <span className={styles.span}>Confident AI</span>
-        </Link>
-        <div className={`${styles.linkWrap} ${active ? styles.active : ""}`}>
-          <div className={styles.nav}>
-            {navLinks.map(link =>
-              link.children ? (
-                <div
-                  ref={popoverRef}
-                  className={styles.navItemWithPopover}
-                  key={link.label}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActivatePopOver(!activatePopOver);
-                  }}
-                >
-                  <span className={styles.navLink}>{link.label}</span>
+        <div className={styles.left}>
+          <Link href="/" className={styles.logoWrap}>
+            <Image
+              src="/icons/logo-without-border.svg"
+              alt="White bowtie with confident AI written on the right side"
+              width={32}
+              height={32}
+              priority
+            />
+            <span className={styles.span}>Confident AI</span>
+          </Link>
+          <div className={`${styles.linkWrap} ${active ? styles.active : ""}`}>
+            <div className={styles.nav}>
+              {navLinks.map(link =>
+                link.children ? (
                   <div
-                    className={`${styles.arrow} ${
-                      activatePopOver ? styles.active : ""
-                    }`}
+                    ref={popoverRef}
+                    className={styles.navItemWithPopover}
+                    key={link.label}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivatePopOver(!activatePopOver);
+                    }}
                   >
-                    <Image
-                      src="/icons/arrow-down.svg"
-                      width={10}
-                      height={10}
-                      alt="downwards facing arrow"
-                    />
-                  </div>
-                  <div
-                    className={`${styles.popover} ${
-                      activatePopOver ? styles.active : ""
-                    }`}
-                  >
-                    <div className={styles.inner}>
-                      {link.children.map(child => (
-                        <Link href={child.href} key={child.label}>
-                          <div className={styles.popoverLink}>
-                            <span className={styles.childLinkHeading}>
-                              {child.label}
-                            </span>
-                            <p className={styles.childLinkDescription}>
-                              {child.description}
-                            </p>
-                          </div>
-                        </Link>
-                      ))}
+                    <span className={styles.navLink}>{link.label}</span>
+                    <div
+                      className={`${styles.arrow} ${
+                        activatePopOver ? styles.active : ""
+                      }`}
+                    >
+                      <Image
+                        src="/icons/arrow-down.svg"
+                        width={10}
+                        height={10}
+                        alt="downwards facing arrow"
+                      />
+                    </div>
+                    <div
+                      className={`${styles.popover} ${
+                        activatePopOver ? styles.active : ""
+                      }`}
+                    >
+                      <div className={styles.inner}>
+                        {link.children.map(child => (
+                          <Link href={child.href} key={child.label}>
+                            <div className={styles.popoverLink}>
+                              <span className={styles.childLinkHeading}>
+                                {child.label}
+                              </span>
+                              <p className={styles.childLinkDescription}>
+                                {child.description}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <Link href={link.href} key={link.label}>
-                  <span className={styles.navLink}>{link.label}</span>
-                </Link>
-              )
-            )}
+                ) : (
+                  <Link href={link.href} key={link.label}>
+                    <span className={styles.navLink}>{link.label}</span>
+                  </Link>
+                )
+              )}
+            </div>
           </div>
         </div>
         <div className={styles.buttonWrap}>

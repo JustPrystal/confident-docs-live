@@ -1,8 +1,7 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
-import Button from "@/components/button/button";
+import Button from "@/components/Button/Button";
 import Link from "next/link";
-import { text } from "stream/consumers";
 
 export default function Feature({ theme = 'deepEval' }) {
   const features = {

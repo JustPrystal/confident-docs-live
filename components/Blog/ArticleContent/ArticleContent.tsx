@@ -9,7 +9,7 @@ import {
   type Text as ContentfulText,
 } from "@contentful/rich-text-types";
 
-import Feature from "@/components/blog/feature/feature";
+import Feature from "@/components/Blog/Feature/Feature";
 
 import Prism from "prismjs";
 import "@/app/styles/prism-styles/prism-colddark-dark.scss";
@@ -46,8 +46,10 @@ const normalizeUrl = (url: string): string => {
 const getNodePlainText = (node: Block | Inline): string => {
   // Contentful paragraphs typically contain an array of Text nodes
   const parts: string[] = [];
-  
-  const content = node?.content as Array<ContentfulText | Block | Inline> | undefined;
+
+  const content = node?.content as
+    | Array<ContentfulText | Block | Inline>
+    | undefined;
   if (!content) return "";
 
   for (const c of content) {
@@ -74,7 +76,12 @@ const parseDescriptionToNodes = (description: string): React.ReactNode[] => {
       nodes.push(description.slice(lastIndex, match.index));
     }
     nodes.push(
-      <a key={`desc-link-${key++}`} href={match[2]} target="_blank" rel="noopener noreferrer">
+      <a
+        key={`desc-link-${key++}`}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {match[1]}
       </a>
     );
@@ -87,7 +94,10 @@ const parseDescriptionToNodes = (description: string): React.ReactNode[] => {
   return nodes;
 };
 
-const CodeBlock: React.FC<{ language: string; code: string }> = ({ language, code }) => {
+const CodeBlock: React.FC<{ language: string; code: string }> = ({
+  language,
+  code,
+}) => {
   const highlighted = useMemo(() => {
     const lang = Prism.languages[language] || Prism.languages.plaintext;
     return Prism.highlight(code, lang, language);
@@ -96,16 +106,26 @@ const CodeBlock: React.FC<{ language: string; code: string }> = ({ language, cod
   return (
     <div className={styles.codeWrap}>
       <pre style={{ backgroundColor: "#111b27" }}>
-        <code className={`language-${language}`} dangerouslySetInnerHTML={{ __html: highlighted }} />
+        <code
+          className={`language-${language}`}
+          dangerouslySetInnerHTML={{ __html: highlighted }}
+        />
       </pre>
     </div>
   );
 };
 
-export default function ArticleContent({ content, theme, isLast = false }: ArticleContentProps) {
+export default function ArticleContent({
+  content,
+  theme,
+  isLast = false,
+}: ArticleContentProps) {
   const options: Options = {
     renderNode: {
-      [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode): React.JSX.Element | null => {
+      [BLOCKS.PARAGRAPH]: (
+        node: Block | Inline,
+        children: React.ReactNode
+      ): React.JSX.Element | null => {
         // Join text of all children to detect a fenced code block starting the paragraph
         const text = getNodePlainText(node);
 
@@ -127,10 +147,11 @@ export default function ArticleContent({ content, theme, isLast = false }: Artic
         }
 
         // Only render paragraph if there's meaningful content
-        const hasMeaningfulChild =
-          Array.isArray(children) ?
-            children.some((child) => (typeof child === "string" ? child.trim().length > 0 : !!child)) :
-            !!children;
+        const hasMeaningfulChild = Array.isArray(children)
+          ? children.some(child =>
+              typeof child === "string" ? child.trim().length > 0 : !!child
+            )
+          : !!children;
 
         if (!hasMeaningfulChild) return null;
         return <p>{children}</p>;
@@ -141,7 +162,8 @@ export default function ArticleContent({ content, theme, isLast = false }: Artic
         if (!file?.url) return null;
 
         const title: string = (node as any)?.data?.target?.fields?.title || "";
-        const description: string = (node as any)?.data?.target?.fields?.description || "";
+        const description: string =
+          (node as any)?.data?.target?.fields?.description || "";
 
         const src = normalizeUrl(file.url);
         const alt = description || title || "Blog image";
@@ -149,37 +171,57 @@ export default function ArticleContent({ content, theme, isLast = false }: Artic
         return (
           <figure>
             <img src={src} alt={alt} style={{ maxWidth: "100%" }} />
-            {description && <figcaption>{parseDescriptionToNodes(description)}</figcaption>}
+            {description && (
+              <figcaption>{parseDescriptionToNodes(description)}</figcaption>
+            )}
           </figure>
         );
       },
 
-      [BLOCKS.HEADING_1]: (node: Block, children: React.ReactNode): React.JSX.Element => {
+      [BLOCKS.HEADING_1]: (
+        node: Block,
+        children: React.ReactNode
+      ): React.JSX.Element => {
         const text = getNodePlainText(node);
         const id = generateSlug(text);
         return <h1 id={id}>{children}</h1>;
       },
-      [BLOCKS.HEADING_2]: (node: Block, children: React.ReactNode): React.JSX.Element => {
+      [BLOCKS.HEADING_2]: (
+        node: Block,
+        children: React.ReactNode
+      ): React.JSX.Element => {
         const text = getNodePlainText(node);
         const id = generateSlug(text);
         return <h2 id={id}>{children}</h2>;
       },
-      [BLOCKS.HEADING_3]: (node: Block, children: React.ReactNode): React.JSX.Element => {
+      [BLOCKS.HEADING_3]: (
+        node: Block,
+        children: React.ReactNode
+      ): React.JSX.Element => {
         const text = getNodePlainText(node);
         const id = generateSlug(text);
         return <h3 id={id}>{children}</h3>;
       },
-      [BLOCKS.HEADING_4]: (node: Block, children: React.ReactNode): React.JSX.Element => {
+      [BLOCKS.HEADING_4]: (
+        node: Block,
+        children: React.ReactNode
+      ): React.JSX.Element => {
         const text = getNodePlainText(node);
         const id = generateSlug(text);
         return <h4 id={id}>{children}</h4>;
       },
-      [BLOCKS.HEADING_5]: (node: Block, children: React.ReactNode): React.JSX.Element => {
+      [BLOCKS.HEADING_5]: (
+        node: Block,
+        children: React.ReactNode
+      ): React.JSX.Element => {
         const text = getNodePlainText(node);
         const id = generateSlug(text);
         return <h5 id={id}>{children}</h5>;
       },
-      [BLOCKS.HEADING_6]: (node: Block, children: React.ReactNode): React.JSX.Element => {
+      [BLOCKS.HEADING_6]: (
+        node: Block,
+        children: React.ReactNode
+      ): React.JSX.Element => {
         const text = getNodePlainText(node);
         const id = generateSlug(text);
         return <h6 id={id}>{children}</h6>;
@@ -188,15 +230,23 @@ export default function ArticleContent({ content, theme, isLast = false }: Artic
   };
 
   return (
-    <div className={`${styles.ArticleContent} ${styles[theme]}`} id="article-content">
+    <div
+      className={`${styles.ArticleContent} ${styles[theme]}`}
+      id="article-content"
+    >
       {documentToReactComponents(content, options)}
 
       {isLast && (
         <>
           <hr />
           <p>
-            Do you want to brainstorm how to evaluate your LLM (application)? Ask us anything in our{" "}
-            <a href="https://discord.com/invite/a3K9c8GRGt" target="_blank" rel="noopener noreferrer">
+            Do you want to brainstorm how to evaluate your LLM (application)?
+            Ask us anything in our{" "}
+            <a
+              href="https://discord.com/invite/a3K9c8GRGt"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               discord
             </a>
             . I might give you an “aha!” moment, who knows?

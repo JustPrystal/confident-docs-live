@@ -1,5 +1,6 @@
 import styles from "./styles.module.scss";
-import Button from "@/components/button/button";
+import Button from "@/components/Button/Button";
+
 export default function Memberships() {
   const memberships = [
     {
@@ -285,7 +286,7 @@ export default function Memberships() {
      <div
         className={styles.absoluteBackground}
         style={{
-          backgroundImage: `radial-gradient(circle closest-side at 50% 42%, #0a0b14d1 90%, #0e0e13), url("/img/grid-bg.svg")`,
+          backgroundImage: `radial-gradient(circle closest-side at 50% 42%, #0b101b00 90%, #0e0e13), url("/img/grid-bg.svg")`,
         }}
       ></div>
     </div>

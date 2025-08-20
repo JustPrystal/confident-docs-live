@@ -1,8 +1,8 @@
 import { getTerm } from "@/functions/get-terms";
 import styles from "./styles.module.scss";
+import GlobalLayout from "@/app/global-layout";
+import Terms from "@/components/Terms/Terms";
 
-import GlobalLayout from "../global-layout";
-import Terms from "@/components/terms/terms";
 export const metadata = {
   title: "Terms & Conditions - Confident AI",
   description:

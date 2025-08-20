@@ -1,8 +1,9 @@
 import { getTerm } from "@/functions/get-terms"; 
 import styles from "./styles.module.scss";
 
-import GlobalLayout from "../global-layout";
-import TermsContent from '@/components/terms/terms';
+import GlobalLayout from "@/app/global-layout";
+import TermsContent from '@/components/Terms/Terms';
+
 export const metadata = {
   title: "Privacy Policy",
   description: "Companies of all sizes use Confident AI to justify why their LLM applications - RAG, Agents, or Chatbots, deserves to be in production.",

@@ -1,0 +1,26 @@
+@import "@/app/styles/vars";
+
+@keyframes shimmer {
+  100% {
+    mask-position: left;
+  }
+}
+
+.skeleton {
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  animation: shimmer 2.5s infinite;
+}
+
+.dark {
+  background-color: $zinc-950;
+  border: 1px solid $zinc-800;
+  mask: linear-gradient(-60deg, #000 30%, rgba(0, 0, 0, 0.787), #000 70%) right/350% 100%;
+}
+
+.light {
+  background-color: $lightGray;
+  border: 1px solid darken($lightGray, 10%);
+  mask: linear-gradient(-60deg, #000 30%, rgba(0, 0, 0, 0.321), #000 70%) right/350% 100%;
+}

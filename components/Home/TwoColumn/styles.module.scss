@@ -90,11 +90,11 @@
       flex: none;
       width: 50%;
       max-width: 55%;
-      box-shadow: 0 2px 20px $black;
       border-radius: 8px;
       overflow: hidden;
       position: relative;
       height: fit-content;
+
       @include responsive(xl) {
         width: 55%;
       }

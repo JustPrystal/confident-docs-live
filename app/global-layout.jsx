@@ -1,6 +1,6 @@
 "use client"
-import CustomNavbar from '@/components/customNavbar/customNavbar';
-import Footer from "@/components/footer/footer";
+import CustomNavbar from '@/components/CustomNavbar/CustomNavbar';
+import Footer from "@/components/Footer/Footer";
 import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
 

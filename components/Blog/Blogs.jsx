@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import cardStyles from './card.module.scss'
-import Skeleton from "@/components/blog/skeleton/skeleton";
-import Card from "./card/card";
+import cardStyles from "./card.module.scss";
+import Card from "@/components/Blog/Card/Card";
 
 export default function Blogs({
   limit = 3,
@@ -69,24 +68,28 @@ export default function Blogs({
           </div>
         )}
         <div className={styles.blogs}>
-          {!isLoading &&
-            blogs?.map((blog, idx) => (
+          {blogs?.length > 0 ? (
+            blogs.map((blog, idx) => (
               <Card
                 blog={blog}
                 key={idx}
                 variant={blogVariant}
                 styles={cardStyles}
                 orientation={blogOrientation}
+                isLoading={isLoading}
               />
-            ))}
-
-          {isLoading &&
+            ))
+          ) : (
             [...Array(limit)].map((_, index) => (
-              <Skeleton
+              <Card
                 key={index}
-                className={`${cardStyles.Card} ${cardStyles[blogOrientation]}`}
+                variant={blogVariant}
+                styles={cardStyles}
+                orientation={blogOrientation}
+                isLoading={true}
               />
-            ))}
+            ))
+          )}
         </div>
         <div className={styles.pagination}>
           {currentPage !== 1 && (
